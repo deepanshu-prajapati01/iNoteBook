@@ -1,10 +1,17 @@
-import React from 'react'
+
+import AddNote from './AddNote';
+import Notes from './Notes';
 
 const Home = () => {
+
     return (
-        <div>
-            This is Home Page
-        </div>
+        <>
+
+            <AddNote />
+            <div className='container'>
+                <Notes />
+            </div>
+        </>
     )
 }
 

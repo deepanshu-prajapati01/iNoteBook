@@ -9,13 +9,16 @@ import Navbar from './components/Navbar';
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert";
 
 function App() {
+      const message = "This is a very important message!"
   return (
     <>
       <NoteState>
         <Router>
           <Navbar />
+          <Alert message={message}/>
 
           <Routes>
             <Route path="/" element={
@@ -33,6 +36,8 @@ function App() {
           </Routes>
         </Router >
       </NoteState>
+
+
 
 
     </>
