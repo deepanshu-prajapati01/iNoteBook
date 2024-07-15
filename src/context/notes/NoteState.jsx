@@ -2,160 +2,97 @@ import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-    const notesInitial = [
-        {
-            "_id": "668cdbf011e9e42053826b01",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "Hello i am back baby",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:42:56.635Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdbfc11e9e42053826b06",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:08.085Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdbfc11e9e42053826b08",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:08.324Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0111e9e42053826b0b",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:13.754Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0111e9e42053826b0d",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:13.875Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0111e9e42053826b0f",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:13.995Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b11",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.114Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b13",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.235Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b15",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.356Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b17",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.492Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b19",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.611Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b1b",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.739Z",
-            "__v": 0
-        },
-        {
-            "_id": "668cdc0211e9e42053826b1d",
-            "user": "668cdb558a7c3b77139eb4b6",
-            "title": "sampleTitle",
-            "description": "This is a cool description",
-            "tag": "General",
-            "date": "2024-07-09T06:43:14.884Z",
-            "__v": 0
-        }
-    ]
-
+    const host = "http://localhost:5000";
+    const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
 
-    // Add a note
-    const addNote = (title, description, tag) => {
-        // API CALL
-        console.log("Adding a new note!")
+    // ^ Get all notes
+    const getNotes = async () => {
+        // API CALL HERE
+        const response = await fetch(`${host}/api/notes/fetchallnotes`,
+            {
+                method: "GET",
+                headers: {
+                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4Y2RiNTU4YTdjM2I3NzEzOWViNGI2In0sImlhdCI6MTcyMDUwNzIyMX0.wTbyleWZAj3CZP_wLAH1Az6QzLfCMwaVpIwiaVaAEtg",
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+        const json = await response.json()
+        console.log(json)
+        setNotes(json)
+    }
+
+
+    // ^ Add a note
+    const addNote = async (title, description, tag) => {
+        const response = await fetch(`${host}/api/notes/addnote`,
+            {
+                method: "POST",
+                headers: {
+                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4Y2RiNTU4YTdjM2I3NzEzOWViNGI2In0sImlhdCI6MTcyMDUwNzIyMX0.wTbyleWZAj3CZP_wLAH1Az6QzLfCMwaVpIwiaVaAEtg",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ title, description, tag })
+            }
+        );
+        console.log("Adding a new note")
         const note = {
-            "_id": "668cdbffd011e9e42053826b01",
-            "user": "668cdb558a7c3b77139eb4b6",
+            "_id": "61322f119553781a8ca8d0e08",
+            "user": "6131dc5e3e4037cd4734a0664",
             "title": title,
             "description": description,
             "tag": tag,
-            "date": "2024-07-09T06:42:56.635Z",
+            "date": "2021-09-03T14:20:09.668Z",
             "__v": 0
-        }
+        };
         setNotes(notes.concat(note))
-
     }
 
-    // Delete a note
-    const deleteNote = (id) => {
+
+
+
+
+
+
+    // ^ Delete a note
+    const deleteNote = async (id) => {
         console.log("Deleting a note!")
         const newNotes = notes.filter((note) => { return note._id !== id });
         setNotes(newNotes);
-
     }
-    // Edit a note
-    const editNote = (id, title, description, tag) => {
 
+
+
+    // ^ Edit a note
+    const editNote = async (id, title, description, tag) => {
+        const response = await fetch(`${host}/api/notes/updatenote/${id}`,
+            {
+                headers: {
+                    "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4Y2RiNTU4YTdjM2I3NzEzOWViNGI2In0sImlhdCI6MTcyMDUwNzIyMX0.wTbyleWZAj3CZP_wLAH1Az6QzLfCMwaVpIwiaVaAEtg",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ title, description, tag })
+            }
+        )
+        // const json = await response.json();
+
+        // LOGIC TO ADD IN CLIENT
+        for (let index = 0; index < notes.length; index++) {
+            const element = notes.length;
+            if (element._id === id) {
+                element.title = title;
+                element.description = description;
+                element.tag = tag;
+            }
+        }
     }
+
+
 
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
+        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
             {props.children}
         </NoteContext.Provider>
     )
