@@ -1,70 +1,54 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# iNoteBook : A react full stack project which includes users to store their notes online 
+![sample Image](https://github.com/deepanshu-prajapati01/newsMonkeyWebApplication/blob/master/sampleImages/Screenshot%202024-07-08%20134321.png)
 
-## Available Scripts
+# Things i have learnt during this project: 
 
-In the project directory, you can run:
+* This project was my first project which includes the functionality of backend and it gives great understanding.
+* It also includes the user authentication system.
 
-### `npm start`
+# Some important things: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Make sure to download [MongoDB](https://www.mongodb.com/) for backend database, for better knowledge of setup refer to [this video...](https://www.youtube.com/watch?v=jWIeK3ueOm8&list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&index=43&pp=iAQB)
+* In this project the `backend` folder is inside the main `iNoteBook` folder.
+* Both `backend` and `iNoteBook` have their separate dependencies which to be installed separately
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# How to use this script:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Step 1: Clone this repo using the following command.
 
-### `npm run build`
+```shell
+git clone https://github.com/deepanshu-prajapati01/iNoteBook
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Step 2: Navigate to the cloned folder using the following command.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+cd iNoteBook
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Step 3: Install all the required dependencies for the frontend and backend using the following command.
 
-### `npm run eject`
+```shell
+npm i
+cd ./backend
+npm i
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Step 4: Before running the backend make sure to change your `mongoURI` from the backend file `db.js`. Later, use this shell to run backend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```shell
+nodemon ./index.js
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Step 5: Open one more `Shell` in the `iNoteBook` directory and run the following command (for the frontend): 
 
-## Learn More
+```shell
+npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# That's it! You are ready to go! 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# NOTE: This project is a part of [CodeWithHarry](https://youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&si=7P1JF_ioFD1rg2Hb) playlist.
