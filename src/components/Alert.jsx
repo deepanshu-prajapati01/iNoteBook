@@ -1,12 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Alert = (props) => {
+export default function Alert(props) {
 
     return (
-        <div className="alert alert-primary" role="alert">
-            {props.message}
-        </div>
+        <>
+            <div id="Alert" className={`alert alert-${props.alertColor} d-flex justify-content-center`} role="alert" style={{ opacity: props.opacity, transition: 'opacity 0.5s ease-out' }}>
+                {props.alertText}
+            </div>
+        </>
     )
 }
 
-export default Alert
+
+Alert.prototypes = {
+    opacity: PropTypes.number.isRequired,
+    alertText: PropTypes.string,
+    alertColor: PropTypes.string
+}
+
+Alert.defaultProps = {
+    opacity: 1,
+    alertText: "Dismiss",
+    alertColor: "info"
+}

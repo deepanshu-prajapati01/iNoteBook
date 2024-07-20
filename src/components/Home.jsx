@@ -2,14 +2,14 @@
 import AddNote from './AddNote';
 import Notes from './Notes';
 
-const Home = () => {
+const Home = (props) => {
 
     return (
         <>
 
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
             <div className='container'>
-                <Notes />
+                <Notes showAlert={props.showAlert} />
             </div>
         </>
     )

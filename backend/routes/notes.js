@@ -27,6 +27,7 @@ router.post("/addnote", fetchuser, [
 ], async (req, res) => {
 
     try {
+
         const { title, description, tag } = req.body;
 
         // checking for any error if so block access  
@@ -42,7 +43,7 @@ router.post("/addnote", fetchuser, [
         const savedNote = await note.save()
         res.json(savedNote)
     } catch (error) {
-
+        console.log(`Error occurred -> ${error}`)
     }
 })
 
