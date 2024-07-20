@@ -1,6 +1,6 @@
 
 # iNoteBook : A react full stack project which includes users to store their notes online 
-![sample Image](https://github.com/deepanshu-prajapati01/newsMonkeyWebApplication/blob/master/sampleScreenshot.png)
+![sample Image](https://github.com/deepanshu-prajapati01/iNoteBook/blob/master/sampleScreenshot.png)
 
 # Things i have learnt during this project: 
 
