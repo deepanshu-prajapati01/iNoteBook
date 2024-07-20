@@ -3,6 +3,12 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = (props) => {
     let location = useLocation();
+
+    const handleLogOut = () => {
+        localStorage.removeItem("token");
+        props.showAlert("User logged out successfully", "success")
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -24,11 +30,11 @@ const Navbar = (props) => {
                         </ul>
                     </div>
                     {/* login and sign up button */}
-                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/login" ? "d-none" : ""} ${location.pathname === "/" ? "d-none" : ""}`} to={"/login"} role="button">Login</Link>
-                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/signup" ? "d-none" : ""} ${location.pathname === "/" ? "d-none" : ""}`} to={"/signup"} role="button">Sign Up</Link>
+                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/login" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/login"} role="button">Login</Link>
+                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/signup" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/signup"} role="button">Sign Up</Link>
 
                     {/* logout button */}
-                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/login" ? "d-none" : ""} ${location.pathname === "/signup" ? "d-none" : ""}`} to={"/login"} role="button">LogOut</Link>
+                    <Link className={`btn btn-primary mx-1 ${localStorage.getItem('token') ? "" : "d-none"}`} to={"/login"} onClick={handleLogOut} role="button">LogOut</Link>
                 </div>
             </nav>
         </>

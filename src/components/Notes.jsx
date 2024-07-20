@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from '../context/notes/noteContext';
 import NoteItem from './noteItem';
-
+import { useNavigate } from 'react-router-dom';
 const Notes = (props) => {
+    let navigate = useNavigate();
+
+
+
     const [note, setNote] = useState({ editTitle: "", editDescription: "", editTag: "" })
 
     const context = useContext(noteContext);
@@ -12,7 +16,13 @@ const Notes = (props) => {
 
     // to load all the notes from the database
     useEffect(() => {
+        // check if the user is login or not! if no redirect him to login page
+        if (!localStorage.getItem('token')) {
+            navigate("/login")
+        }
+
         getNotes();
+        // eslint-disable-next-line
     }, [])
 
     const updateNote = (currentNote) => {
