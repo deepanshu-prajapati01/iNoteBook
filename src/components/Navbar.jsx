@@ -30,11 +30,13 @@ const Navbar = (props) => {
                         </ul>
                     </div>
                     {/* login and sign up button */}
-                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/login" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/login"} role="button">Login</Link>
-                    <Link className={`btn btn-primary mx-1 ${location.pathname === "/signup" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/signup"} role="button">Sign Up</Link>
+                     <div className="collapse navbar-collapse" id="navbarNav" style={{ "position": "absolute", "right": "1rem" }}>
+                        <Link className={`btn btn-primary mx-1 ${location.pathname === "/login" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/login"} role="button">Login</Link>
+                        <Link className={`btn btn-primary mx-1 ${location.pathname === "/signup" ? "d-none" : ""} ${localStorage.getItem('token') ? "d-none" : ""}`} to={"/signup"} role="button">Sign Up</Link>
 
-                    {/* logout button */}
-                    <Link className={`btn btn-primary mx-1 ${localStorage.getItem('token') ? "" : "d-none"}`} to={"/login"} onClick={handleLogOut} role="button">LogOut</Link>
+                        {/* logout button */}
+                        <Link className={`btn btn-primary mx-1 ${localStorage.getItem('token') ? "" : "d-none"}`} to={"/login"} onClick={handleLogOut} role="button">LogOut</Link>
+                    </div>
                 </div>
             </nav>
         </>
